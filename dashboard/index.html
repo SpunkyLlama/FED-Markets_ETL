@@ -1,0 +1,474 @@
+<meta name="dash-one-writer">
+<style>
+.mb { max-width: 1120px; margin: 0 auto; display: flex; flex-direction: column; gap: var(--cds-gap-xl); font-family: var(--font-anthropic-sans); color: var(--color-fg); }
+.mb * { box-sizing: border-box; }
+.mb h1 { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: var(--cds-font-size-title); margin: 0; text-wrap: balance; }
+.mb h2 { font-size: var(--cds-font-size-heading); font-weight: var(--cds-font-weight-medium); margin: 0 0 var(--cds-gap-sm); text-wrap: balance; }
+.mb h3 { font-size: var(--cds-font-size-caption); font-weight: var(--cds-font-weight-medium); letter-spacing: .06em; text-transform: uppercase; color: var(--color-fg-muted); margin: 0; }
+.mb p { margin: 0; line-height: 1.5; }
+.mb .lede { font-size: var(--cds-font-size-heading); line-height: 1.45; max-width: 70ch; margin-top: var(--cds-gap-sm); text-wrap: pretty; }
+.mb .muted { color: var(--color-fg-muted); }
+.mb .num { font-variant-numeric: tabular-nums; }
+.mb-kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: var(--cds-gap-md); }
+.mb-kpi { background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: var(--cds-pad-lg); display: flex; flex-direction: column; gap: var(--cds-gap-xs); min-width: 0; }
+.mb-kv { font-family: var(--font-anthropic-serif); font-size: 30px; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.mb-d { font-size: var(--cds-font-size-caption); font-variant-numeric: tabular-nums; }
+.mb-d.good { color: var(--color-ok); } .mb-d.bad { color: var(--color-bad); } .mb-d.flat { color: var(--color-fg-muted); }
+.mb-sub { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); line-height: 1.4; }
+.mb-asof { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+.mb-pill { font-size: 11px; line-height: 1; padding: 3px 6px; border-radius: 99px; border: 1px solid var(--color-warn); color: var(--color-warn); text-transform: uppercase; letter-spacing: .04em; }
+.mb-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--cds-gap-lg); }
+.mb-card { background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: var(--cds-pad-lg); min-width: 0; }
+.mb-tw { overflow-x: auto; }
+.mb table { width: 100%; border-collapse: collapse; font-size: var(--cds-font-size-body); }
+.mb th, .mb td { text-align: left; padding: 8px 10px 8px 0; border-bottom: 1px solid var(--color-border-line); vertical-align: top; }
+.mb thead th { font-size: var(--cds-font-size-caption); font-weight: var(--cds-font-weight-medium); color: var(--color-fg-muted); letter-spacing: .04em; text-transform: uppercase; }
+.mb td.r, .mb th.r { text-align: right; font-variant-numeric: tabular-nums; }
+.mb td.nt { color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); }
+.mb-chart { position: relative; min-height: 280px; }
+.mb-chart svg { display: block; width: 100%; height: auto; overflow: visible; }
+.mb-chart text { fill: var(--cds-text-secondary); font-size: 12px; font-family: var(--font-anthropic-sans); }
+.mb-leg { display: flex; gap: var(--cds-gap-md); flex-wrap: wrap; font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); margin-bottom: var(--cds-gap-xs); }
+.mb-leg i { display: inline-block; width: 18px; height: 3px; border-radius: 2px; margin-right: 6px; vertical-align: middle; }
+.mb-tip { position: absolute; pointer-events: none; background: var(--cds-surface-popover); border: 1px solid var(--cds-border); box-shadow: var(--cds-shadow-popover); color: var(--cds-text-secondary); border-radius: 6px; padding: 6px 8px; font-size: 12px; line-height: 1.4; white-space: nowrap; z-index: 2; }
+.mb-fix { border: 1px solid var(--color-warn); border-radius: var(--cds-radius); padding: var(--cds-pad-lg); }
+.mb-fix ul { margin: var(--cds-gap-xs) 0 0; padding-left: 18px; font-size: var(--cds-font-size-caption); line-height: 1.5; }
+.mb-sig { font-weight: var(--cds-font-weight-medium); }
+.mb-sig.ok { color: var(--color-ok); } .mb-sig.bad { color: var(--color-bad); }
+.mb details { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); }
+.mb summary { cursor: pointer; }
+.mb summary:focus-visible { outline: 2px solid var(--color-fg); outline-offset: 2px; }
+.mb footer { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); border-top: 1px solid var(--color-border-line); padding-top: var(--cds-gap-md); display: flex; flex-direction: column; gap: var(--cds-gap-xs); }
+.mb-read { display: flex; flex-direction: column; gap: var(--cds-gap-md); max-width: 72ch; }
+@media (max-width: 520px) { .mb-kv { font-size: 26px; } }
+</style>
+
+<div class="mb">
+  <header>
+    <h3>Markets briefing</h3>
+    <h1>Market Briefing</h1>
+    <p class="lede" data-draw="lede">—</p>
+    <p class="mb-asof" style="margin-top:8px" data-draw="dataasof">—</p>
+  </header>
+
+  <div class="mb-fix" id="fix" hidden>
+    <h2 id="fix-h">Corrections and revisions</h2>
+    <p class="muted" style="font-size:var(--cds-font-size-caption)">Stored values that were revised or found wrong, taken from the data's own notes.</p>
+    <ul data-draw="fixes"></ul>
+  </div>
+
+  <section id="kpis" aria-label="Key figures">
+    <div class="mb-kpis">
+      <article class="mb-kpi"><h3>S&amp;P 500</h3><div data-draw="cell" data-spec="kpi:spx">—</div></article>
+      <article class="mb-kpi"><h3>Fed funds target range</h3><div data-draw="cell" data-spec="kpi:fed">—</div></article>
+      <article class="mb-kpi"><h3>CPI, headline YoY</h3><div data-draw="cell" data-spec="kpi:cpi">—</div></article>
+      <article class="mb-kpi"><h3>Unemployment rate</h3><div data-draw="cell" data-spec="kpi:unemp">—</div></article>
+      <article class="mb-kpi"><h3>10-yr Treasury yield</h3><div data-draw="cell" data-spec="kpi:ust">—</div></article>
+      <article class="mb-kpi"><h3>Brent crude</h3><div data-draw="cell" data-spec="kpi:brent">—</div></article>
+    </div>
+  </section>
+
+  <section id="read" aria-labelledby="read-h">
+    <h2 id="read-h">The read</h2>
+    <div class="mb-read" data-draw="read">—</div>
+    <p class="muted" style="font-size:var(--cds-font-size-caption);margin-top:8px">Written by rule from the stored numbers, so it changes when they do. It is a read, not a forecast.</p>
+  </section>
+
+  <section id="charts" class="mb-cols" aria-label="Charts">
+    <div class="mb-card">
+      <h2 id="c1-h">S&amp;P 500 vs the 10-yr yield</h2>
+      <p class="muted" style="font-size:var(--cds-font-size-caption);margin-bottom:8px">About three months. Hollow dots are unverified; lines run point to point between the closes the data holds.</p>
+      <div class="mb-chart" data-draw="chart-spx" data-source="briefing">—</div>
+    </div>
+    <div class="mb-card">
+      <h2 id="c2-h">CPI: headline vs core vs 2% target</h2>
+      <p class="muted" style="font-size:var(--cds-font-size-caption);margin-bottom:8px">Year over year, last five months published. October has no YoY: BLS collected no October 2025 prices.</p>
+      <div class="mb-chart" data-draw="chart-cpi" data-source="briefing">—</div>
+    </div>
+  </section>
+
+  <section id="assets" aria-labelledby="assets-h">
+    <h2 id="assets-h">Assets</h2>
+    <div class="mb-tw">
+      <table>
+        <thead><tr><th>Asset</th><th class="r">Latest</th><th class="r">YTD</th><th>Note (as of)</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">S&amp;P 500</th><td class="r" data-draw="cell" data-spec="val:spx_close:n2"></td><td class="r" data-draw="cell" data-spec="val:spx_ytd_pct:pct1"></td><td class="nt" data-draw="cell" data-spec="note:spx_close"></td></tr>
+          <tr><th scope="row">Nasdaq Composite</th><td class="r" data-draw="cell" data-spec="val:nasdaq_close:n2"></td><td class="r muted">n/a</td><td class="nt" data-draw="cell" data-spec="note:nasdaq_close"></td></tr>
+          <tr><th scope="row">Dow Jones</th><td class="r" data-draw="cell" data-spec="val:dow_close:n2"></td><td class="r muted">n/a</td><td class="nt" data-draw="cell" data-spec="note:dow_close"></td></tr>
+          <tr><th scope="row">Russell 2000</th><td class="r" data-draw="cell" data-spec="val:rut_close:n2"></td><td class="r muted">n/a</td><td class="nt" data-draw="cell" data-spec="note:rut_close"></td></tr>
+          <tr><th scope="row">10-yr Treasury</th><td class="r" data-draw="cell" data-spec="val:ust10y_pct:pct2"></td><td class="r muted">n/a</td><td class="nt" data-draw="cell" data-spec="note:ust10y_pct"></td></tr>
+          <tr><th scope="row">VIX</th><td class="r" data-draw="cell" data-spec="val:vix_close:n2"></td><td class="r muted">n/a</td><td class="nt" data-draw="cell" data-spec="note:vix_close"></td></tr>
+          <tr><th scope="row">Gold</th><td class="r" data-draw="cell" data-spec="val:gold_usd:usd0"></td><td class="r muted">n/a</td><td class="nt" data-draw="cell" data-spec="note:gold_usd"></td></tr>
+          <tr><th scope="row">WTI</th><td class="r" data-draw="cell" data-spec="val:wti_usd:usd2"></td><td class="r muted">n/a</td><td class="nt" data-draw="cell" data-spec="note:wti_usd"></td></tr>
+          <tr><th scope="row">Brent</th><td class="r" data-draw="cell" data-spec="val:brent_usd:usd2"></td><td class="r muted">n/a</td><td class="nt" data-draw="cell" data-spec="note:brent_usd"></td></tr>
+          <tr><th scope="row">USD/JPY</th><td class="r" data-draw="cell" data-spec="val:usdjpy:n2"></td><td class="r muted">n/a</td><td class="nt" data-draw="cell" data-spec="note:usdjpy"></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="muted" style="font-size:var(--cds-font-size-caption);margin-top:8px">YTD needs each index's Dec 31 close, which the data file does not hold yet. Only the S&amp;P has a stored YTD (Oct 20). Each row shows the latest stored observation, with its date.</p>
+  </section>
+
+  <section class="mb-cols" aria-label="Inflation, Fed and labor">
+    <div class="mb-card" id="inflation">
+      <h2>Inflation</h2>
+      <div class="mb-tw"><table><thead><tr><th>Measure</th><th class="r">Latest</th><th>As of</th></tr></thead><tbody>
+        <tr><th scope="row">CPI headline YoY</th><td class="r" data-draw="cell" data-spec="val:cpi_yoy_pct:pct1"></td><td class="nt" data-draw="cell" data-spec="asof:cpi_yoy_pct"></td></tr>
+        <tr><th scope="row">Core CPI YoY</th><td class="r" data-draw="cell" data-spec="val:core_cpi_yoy_pct:pct1"></td><td class="nt" data-draw="cell" data-spec="asof:core_cpi_yoy_pct"></td></tr>
+        <tr><th scope="row">CPI headline MoM</th><td class="r" data-draw="cell" data-spec="val:cpi_mom_pct:pct1"></td><td class="nt" data-draw="cell" data-spec="asof:cpi_mom_pct"></td></tr>
+        <tr><th scope="row">Core CPI MoM</th><td class="r" data-draw="cell" data-spec="val:core_cpi_mom_pct:pct1"></td><td class="nt" data-draw="cell" data-spec="asof:core_cpi_mom_pct"></td></tr>
+        <tr><th scope="row">Core PCE YoY</th><td class="r" data-draw="cell" data-spec="val:core_pce_yoy_pct:pct1"></td><td class="nt" data-draw="cell" data-spec="asof:core_pce_yoy_pct"></td></tr>
+        <tr><th scope="row">PCE YoY</th><td class="r" data-draw="cell" data-spec="val:pce_yoy_pct:pct1"></td><td class="nt" data-draw="cell" data-spec="asof:pce_yoy_pct"></td></tr>
+        <tr><th scope="row">Real avg hourly earnings YoY</th><td class="r" data-draw="cell" data-spec="val:real_ahe_yoy_pct:pct1"></td><td class="nt" data-draw="cell" data-spec="asof:real_ahe_yoy_pct"></td></tr>
+        <tr><th scope="row">Gasoline, national avg</th><td class="r" data-draw="cell" data-spec="val:gasoline_usd_gal:usd2"></td><td class="nt" data-draw="cell" data-spec="asof:gasoline_usd_gal"></td></tr>
+      </tbody></table></div>
+      <p class="muted" style="font-size:var(--cds-font-size-caption);margin-top:8px">Each month's consensus is in that row's note (open Sources). Not stored yet: share of CPI categories above 3% annualized, supercore services.</p>
+    </div>
+    <div class="mb-card" id="fed">
+      <h2>Fed</h2>
+      <div class="mb-tw"><table><thead><tr><th>Item</th><th class="r">Latest</th><th>As of</th></tr></thead><tbody>
+        <tr><th scope="row">Target range, lower</th><td class="r" data-draw="cell" data-spec="val:fed_funds_lower_pct:pct2"></td><td class="nt" data-draw="cell" data-spec="asof:fed_funds_lower_pct"></td></tr>
+        <tr><th scope="row">Target range, upper</th><td class="r" data-draw="cell" data-spec="val:fed_funds_upper_pct:pct2"></td><td class="nt" data-draw="cell" data-spec="asof:fed_funds_upper_pct"></td></tr>
+        <tr><th scope="row">Dec 8–9 hike odds</th><td class="r" data-draw="cell" data-spec="val:fomc_hike_odds_pct:pct0"></td><td class="nt" data-draw="cell" data-spec="asof:fomc_hike_odds_pct"></td></tr>
+        <tr><th scope="row">BOJ policy rate</th><td class="r" data-draw="cell" data-spec="val:boj_rate_pct:pct2"></td><td class="nt" data-draw="cell" data-spec="asof:boj_rate_pct"></td></tr>
+      </tbody></table></div>
+      <p style="margin-top:10px;font-size:var(--cds-font-size-caption)" class="muted" data-draw="fednote">—</p>
+    </div>
+    <div class="mb-card" id="labor">
+      <h2>Labor</h2>
+      <div class="mb-tw"><table><thead><tr><th>Measure</th><th class="r">Latest</th><th>As of</th></tr></thead><tbody>
+        <tr><th scope="row">Nonfarm payrolls</th><td class="r" data-draw="cell" data-spec="val:payrolls_k:k"></td><td class="nt" data-draw="cell" data-spec="asof:payrolls_k"></td></tr>
+        <tr><th scope="row">3-month average</th><td class="r" data-draw="cell" data-spec="facts:payrolls_3m"></td><td class="nt" data-draw="cell" data-spec="facts:payrolls_3m_months"></td></tr>
+        <tr><th scope="row">Unemployment rate</th><td class="r" data-draw="cell" data-spec="val:unemployment_pct:pct1"></td><td class="nt" data-draw="cell" data-spec="asof:unemployment_pct"></td></tr>
+        <tr><th scope="row">Participation rate</th><td class="r" data-draw="cell" data-spec="val:participation_pct:pct1"></td><td class="nt" data-draw="cell" data-spec="asof:participation_pct"></td></tr>
+        <tr><th scope="row">Wage growth YoY</th><td class="r" data-draw="cell" data-spec="val:ahe_yoy_pct:pct1"></td><td class="nt" data-draw="cell" data-spec="asof:ahe_yoy_pct"></td></tr>
+      </tbody></table></div>
+      <h3 style="margin-top:14px">Payrolls by month</h3>
+      <div class="mb-tw"><table><tbody data-draw="payrolls"></tbody></table></div>
+    </div>
+  </section>
+
+  <section id="risks" aria-labelledby="risk-h">
+    <h2 id="risk-h">Macro risks</h2>
+    <div class="mb-cols">
+      <div class="mb-card" id="hormuz">
+        <h3>Iran / Strait of Hormuz</h3>
+        <div data-draw="hormuz" style="margin-top:8px">—</div>
+        <p class="muted" style="font-size:var(--cds-font-size-caption);margin-top:8px">Tanker incidents, blockade status and talks are not stored in the data. The oil and gasoline prices above are what the data can show; the news itself needs a manual update.</p>
+      </div>
+      <div class="mb-card" id="carry">
+        <h3>Yen carry trade</h3>
+        <p class="mb-sig" data-draw="carrysig" style="margin:8px 0">—</p>
+        <div class="mb-tw"><table><thead><tr><th>Indicator</th><th class="r">Latest</th><th>As of</th></tr></thead><tbody>
+          <tr><th scope="row">USD/JPY (trigger below 153)</th><td class="r" data-draw="cell" data-spec="val:usdjpy:n2"></td><td class="nt" data-draw="cell" data-spec="asof:usdjpy"></td></tr>
+          <tr><th scope="row">VIX (trigger above 20)</th><td class="r" data-draw="cell" data-spec="val:vix_close:n2"></td><td class="nt" data-draw="cell" data-spec="asof:vix_close"></td></tr>
+          <tr><th scope="row">JGB 10-yr yield</th><td class="r" data-draw="cell" data-spec="val:jgb10y_pct:pct2"></td><td class="nt" data-draw="cell" data-spec="asof:jgb10y_pct"></td></tr>
+          <tr><th scope="row">US–Japan 2-yr spread</th><td class="r muted">not stored</td><td class="nt">no source yet</td></tr>
+          <tr><th scope="row">Cross-asset correlation</th><td class="r muted">not stored</td><td class="nt">no source yet</td></tr>
+        </tbody></table></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <details>
+      <summary>What the data does not hold yet</summary>
+      <p style="margin-top:6px">Share of CPI categories above 3%, supercore services, Fed speaker remarks, dot plot, the US–Japan 2-yr spread, correlation breakdown, Hormuz incident status, and YTD for every index except the S&amp;P. Daily Brent, USD/JPY, JGB and gold have no clean source after mid-October in this file; the scheduled job is meant to fill them.</p>
+    </details>
+    <p>Personal reference, not investment advice.</p>
+    <p data-draw="foot">—</p>
+  </footer>
+</div>
+
+<script>
+const P = d3.utcParse('%Y-%m-%d'), FD = d3.utcFormat('%b %-d'), FM = d3.utcFormat('%b');
+const FMT = {
+  n2: d3.format(',.2~f'), pct0: (v) => d3.format(',.0f')(v) + '%', pct1: (v) => d3.format('.1f')(v) + '%',
+  pct2: (v) => d3.format('.2f')(v) + '%', usd0: (v) => '$' + d3.format(',.0f')(v), usd2: (v) => '$' + d3.format(',.2f')(v),
+  k: (v) => (v > 0 ? '+' : v < 0 ? '−' : '') + d3.format(',.0f')(Math.abs(v)) + 'k'
+};
+const signed = (v, d) => (v > 0 ? '+' : v < 0 ? '−' : '') + d3.format(',.' + d + 'f')(Math.abs(v));
+
+dash.loader('briefing', {
+  description: 'Parses the CSV, including quoted commas in the notes, and turns the value column into numbers.',
+  fn: ({ answer }) => {
+    const t = typeof answer === 'string' ? answer : String(answer);
+    const recs = []; let row = [], f = '', q = false;
+    for (let i = 0; i < t.length; i++) {
+      const c = t[i];
+      if (q) { if (c === '"') { if (t[i + 1] === '"') { f += '"'; i++; } else q = false; } else f += c; }
+      else if (c === '"') q = true;
+      else if (c === ',') { row.push(f); f = ''; }
+      else if (c === '\n' || c === '\r') { if (c === '\r' && t[i + 1] === '\n') i++; row.push(f); f = ''; if (row.length > 1 || row[0] !== '') recs.push(row); row = []; }
+      else f += c;
+    }
+    if (f !== '' || row.length) { row.push(f); recs.push(row); }
+    const cols = recs.shift();
+    const rows = recs.filter((r) => r.length === cols.length).map((r) => {
+      const o = {}; cols.forEach((c, i) => { o[c] = r[i]; }); o.value = Number(o.value); return o;
+    });
+    return { columns: cols, rows };
+  }
+});
+
+dash.calc('latest', {
+  inputs: ['briefing'],
+  title: 'Latest value per metric',
+  description: 'The most recent observation of each metric, with the verified earlier value its change is measured against.',
+  fn: (briefing) => {
+    const ms = (s) => Date.parse(s + 'T00:00:00Z'), DAY = 864e5, by = new Map();
+    for (const r of briefing) { if (!by.has(r.metric)) by.set(r.metric, []); by.get(r.metric).push(r); }
+    const out = [];
+    for (const [metric, all] of by) {
+      const rs = all.slice().sort((a, b) => (a.obs_date < b.obs_date ? -1 : a.obs_date > b.obs_date ? 1 : 0));
+      const L = rs[rs.length - 1], before = rs.slice(0, -1);
+      let ref = null;
+      if (L.freq === 'D') ref = before.filter((r) => r.quality === 'verified' && ms(L.obs_date) - ms(r.obs_date) >= 7 * DAY).pop() || null;
+      else if (L.freq === 'M') ref = before.filter((r) => r.quality === 'verified' && r.obs_date < L.obs_date).pop() || null;
+      else ref = before.filter((r) => r.value !== L.value).pop() || null;
+      let lc = null;
+      if (L.freq === 'event') for (let i = rs.length - 1; i > 0; i--) if (rs[i].value !== rs[i - 1].value) { lc = rs[i]; break; }
+      out.push({
+        metric, obs_date: L.obs_date, freq: L.freq, value: L.value, unit: L.unit, quality: L.quality, source: L.source, note: L.note,
+        ref_date: ref ? ref.obs_date : null, ref_value: ref ? ref.value : null,
+        change: ref ? +(L.value - ref.value).toFixed(4) : null,
+        change_pct: ref && ref.value ? +((L.value / ref.value - 1) * 100).toFixed(2) : null,
+        last_change_date: lc ? lc.obs_date : null
+      });
+    }
+    return out;
+  }
+});
+
+dash.calc('facts', {
+  inputs: ['briefing'],
+  title: 'Records, peaks and averages',
+  description: 'Verified S&P record close, verified 10-yr peak, the 3-month payrolls average and the newest date in the data.',
+  fn: (briefing) => {
+    const v = briefing.filter((r) => r.quality === 'verified');
+    const top = (m) => v.filter((r) => r.metric === m).sort((a, b) => b.value - a.value)[0] || {};
+    const pay = v.filter((r) => r.metric === 'payrolls_k').sort((a, b) => (a.obs_date < b.obs_date ? 1 : -1)).slice(0, 3);
+    const mo = (s) => ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][+s.slice(5, 7) - 1];
+    const spx = briefing.filter((r) => r.metric === 'spx_close').sort((a, b) => (a.obs_date < b.obs_date ? -1 : 1)).pop() || {};
+    return [{
+      spx_vs_record_pct: spx.value ? +((spx.value / top('spx_close').value - 1) * 100).toFixed(1) : null,
+      spx_record: top('spx_close').value, spx_record_date: top('spx_close').obs_date,
+      ust_peak: top('ust10y_pct').value, ust_peak_date: top('ust10y_pct').obs_date,
+      payrolls_3m: pay.length === 3 ? Math.round(pay.reduce((s, r) => s + r.value, 0) / 3) : null,
+      payrolls_3m_months: pay.map((r) => mo(r.obs_date)).reverse().join(', '),
+      max_date: briefing.map((r) => r.obs_date).sort().pop()
+    }];
+  }
+});
+
+function ready() { return ['briefing', 'latest', 'facts'].every((id) => dash.data(id).status === 'ok'); }
+function L() { const m = {}; for (const r of dash.data('latest').data) m[r.metric] = r; return m; }
+function F() { return dash.data('facts').data[0] || {}; }
+function B() { return dash.data('briefing').data; }
+function h(tag, attrs, ...kids) {
+  const e = document.createElement(tag);
+  for (const k in attrs || {}) { if (attrs[k] != null) e.setAttribute(k, attrs[k]); }
+  for (const c of kids.flat()) if (c != null && c !== false) e.append(c);
+  return e;
+}
+function mk(text, source, field, where, cls) {
+  return h('b', { class: cls || 'num', 'data-source': source, 'data-field': field, 'data-where': where, style: 'font-weight:inherit' }, String(text));
+}
+const lm = (r, f, txt) => mk(txt, 'latest', f, 'metric=' + r.metric);
+const mo = (r) => (r.freq === 'M' ? FM(P(r.obs_date)) : FD(P(r.obs_date)));
+function pill(r) { return r.quality === 'verified' ? null : h('span', { class: 'mb-pill' }, r.quality); }
+function delta(r, mode, good) {
+  if (r.change == null) return h('div', { class: 'mb-d flat' }, 'No verified prior value');
+  const dir = r.change > 0 ? 1 : r.change < 0 ? -1 : 0;
+  const cls = !dir || !good ? 'flat' : (dir > 0) === (good === 'up') ? 'good' : 'bad';
+  const arrow = dir > 0 ? '▲ ' : dir < 0 ? '▼ ' : '';
+  const txt = mode === 'pct' ? signed(r.change_pct, 1) + '%' : mode === 'bp' ? signed(r.change * 100, 0) + ' bp' : signed(r.change, 1) + ' pp';
+  return h('div', { class: 'mb-d ' + cls }, arrow, lm(r, mode === 'pct' ? 'change_pct' : 'change', txt), ' vs ' + (r.freq === 'M' ? FM(P(r.ref_date)) : FD(P(r.ref_date))));
+}
+function asofLine(r) { return h('div', { class: 'mb-asof' }, 'as of ' + mo(r), pill(r)); }
+
+dash.draw('cell', (el) => {
+  const spec = el.getAttribute('data-spec') || '';
+  if (!ready()) { el.replaceChildren(spec.startsWith('kpi') ? '—' : ''); return; }
+  const l = L(), f = F(), [kind, a, b] = spec.split(':');
+  if (kind === 'val') {
+    const r = l[a]; if (!r) { el.replaceChildren('—'); return; }
+    el.replaceChildren(lm(r, 'value', b === 'k' ? signed(r.value, 0) : FMT[b](r.value)), b === 'k' ? 'k' : '', pill(r) ? ' ' : '', pill(r) || '');
+  } else if (kind === 'asof') {
+    const r = l[a]; el.replaceChildren(r ? mo(r) : '—');
+  } else if (kind === 'note') {
+    const r = l[a]; if (!r) { el.replaceChildren('—'); return; }
+    el.replaceChildren(mo(r) + (r.note ? ' · ' + r.note : ''));
+  } else if (kind === 'facts') {
+    const v = f[a]; el.replaceChildren(...(v == null ? ['—'] : a === 'payrolls_3m' ? [mk(signed(v, 0), 'facts', a, null), 'k'] : [String(v)]));
+    if (a === 'payrolls_3m') { const t = el.firstChild; t.setAttribute('data-row', '0'); }
+  } else if (kind === 'kpi') {
+    const box = h('div', { style: 'display:flex;flex-direction:column;gap:6px' });
+    if (a === 'spx') {
+      const r = l.spx_close, below = f.spx_vs_record_pct;
+      box.append(h('div', { class: 'mb-kv' }, lm(r, 'value', FMT.n2(r.value))), delta(r, 'pct', 'up'),
+        h('div', { class: 'mb-sub' }, below < -0.05 ? [mk(signed(below, 1) + '%', 'facts', 'spx_vs_record_pct', null), ' from the ' + FD(P(f.spx_record_date)) + ' record of ', mk(FMT.n2(f.spx_record), 'facts', 'spx_record', null)] : 'At its record close'), asofLine(r));
+    } else if (a === 'fed') {
+      const lo = l.fed_funds_lower_pct, up = l.fed_funds_upper_pct, od = l.fomc_hike_odds_pct, mv = lo.change;
+      box.append(h('div', { class: 'mb-kv' }, lm(lo, 'value', d3.format('.2f')(lo.value)), '–', lm(up, 'value', d3.format('.2f')(up.value)), '%'),
+        h('div', { class: 'mb-d flat' }, 'Held ' + FD(P(lo.obs_date)) + ' · last move ' + signed(mv * 100, 0) + ' bp on ' + FD(P(lo.last_change_date))),
+        h('div', { class: 'mb-sub' }, 'Dec 8–9 hike odds ', lm(od, 'value', FMT.pct0(od.value)), ' (' + FD(P(od.obs_date)) + ')'), asofLine(lo));
+    } else if (a === 'cpi') {
+      const r = l.cpi_yoy_pct, c = l.core_cpi_yoy_pct, m = l.cpi_mom_pct, cm = l.core_cpi_mom_pct;
+      box.append(h('div', { class: 'mb-kv' }, lm(r, 'value', FMT.pct1(r.value))), delta(r, 'pp', 'down'),
+        h('div', { class: 'mb-sub' }, 'Core ', lm(c, 'value', FMT.pct1(c.value)), ' YoY (' + mo(c) + ') · ' + mo(m) + ' MoM ', lm(m, 'value', FMT.pct1(m.value)), ' headline, ', lm(cm, 'value', FMT.pct1(cm.value)), ' core'), asofLine(r));
+    } else if (a === 'unemp') {
+      const r = l.unemployment_pct, p = l.payrolls_k;
+      box.append(h('div', { class: 'mb-kv' }, lm(r, 'value', FMT.pct1(r.value))), delta(r, 'pp', 'down'),
+        h('div', { class: 'mb-sub' }, 'Payrolls ', lm(p, 'value', signed(p.value, 0)), 'k (' + mo(p) + ') · 3-mo avg ', mk(signed(f.payrolls_3m, 0), 'facts', 'payrolls_3m', null), 'k'), asofLine(r));
+    } else if (a === 'ust') {
+      const r = l.ust10y_pct;
+      box.append(h('div', { class: 'mb-kv' }, lm(r, 'value', FMT.pct2(r.value))), delta(r, 'bp', null),
+        h('div', { class: 'mb-sub' }, 'Peak ', mk(FMT.pct2(f.ust_peak), 'facts', 'ust_peak', null), ' on ' + FD(P(f.ust_peak_date)) + ', highest since 2007'), asofLine(r));
+    } else if (a === 'brent') {
+      const r = l.brent_usd, age = Math.round((Date.parse(f.max_date) - Date.parse(r.obs_date)) / 864e5);
+      box.append(h('div', { class: 'mb-kv' }, lm(r, 'value', FMT.usd2(r.value))), delta(r, 'pct', null),
+        h('div', { class: 'mb-sub' }, age > 7 ? 'Stale: ' + age + ' days older than the newest data. ' : '', r.note), asofLine(r));
+    }
+    el.replaceChildren(box);
+  }
+});
+
+dash.draw('lede', (el) => {
+  if (!ready()) { el.textContent = '—'; return; }
+  const l = L(), f = F(), s = l.spx_close, od = l.fomc_hike_odds_pct, p = l.payrolls_k, u = l.ust10y_pct;
+  el.replaceChildren('The S&P 500 closed at ', lm(s, 'value', FMT.n2(s.value)), ' on ' + FD(P(s.obs_date)) + ', ', mk(signed(f.spx_vs_record_pct, 1) + '%', 'facts', 'spx_vs_record_pct', null), ' from its record. A December hike is priced at ',
+    lm(od, 'value', FMT.pct0(od.value)), ', October payrolls came in at ', lm(p, 'value', signed(p.value, 0)), 'k, and the 10-yr sits at ', lm(u, 'value', FMT.pct2(u.value)), ' (' + FD(P(u.obs_date)) + ', ' + u.quality + ').');
+});
+
+dash.draw('dataasof', (el) => {
+  if (!ready()) { el.textContent = '—'; return; }
+  const f = F();
+  el.replaceChildren('Newest observation in the data: ', mk(FD(P(f.max_date)) + ', ' + f.max_date.slice(0, 4), 'facts', 'max_date', null), '. Every figure carries its own as-of date; changes compare with a verified earlier value, named in the cell.');
+});
+
+dash.draw('read', (el) => {
+  if (!ready()) { el.textContent = '—'; return; }
+  const l = L(), f = F(), b = B();
+  const dec = b.filter((r) => r.metric === 'fomc_hike_odds_pct' && /Dec/.test(r.note)).sort((x, y) => (x.obs_date < y.obs_date ? -1 : 1));
+  const od = dec[dec.length - 1], od0 = dec.length > 1 ? dec[dec.length - 2] : null;
+  const real = l.real_ahe_yoy_pct, cm = l.core_cpi_mom_pct, u = l.ust10y_pct, s = l.spx_close, g = l.gasoline_usd_gal, br = l.brent_usd;
+  const out = [];
+  const cons = (/consensus ([\d.]+)/.exec(cm.note) || [])[1], beat = cons != null && cm.value > Number(cons);
+  const p1 = h('p', {}, h('b', {}, 'The hike is priced; the size is the trade. '), 'December odds are ', mk(FMT.pct0(od.value), 'briefing', 'value', 'metric=fomc_hike_odds_pct&obs_date=' + od.obs_date),
+    ' as of ' + FD(P(od.obs_date)) + (od0 ? ', up from ' + FMT.pct0(od0.value) + ' on ' + FD(P(od0.obs_date)) : '') + '. What the consensus is under-weighting: core CPI printed ',
+    lm(cm, 'value', FMT.pct1(cm.value)), ' for ' + mo(cm) + (beat ? ', above the ' + cons + '% expected' : '') + ', while real wages are ', lm(real, 'value', FMT.pct1(real.value)), ' (' + mo(real) + '). Sticky inflation and a squeezed paycheck do not usually end with a mild hike.');
+  const gap = f.ust_peak - u.value;
+  const p2 = gap > 0.2
+    ? h('p', {}, h('b', {}, 'Bonds are not buying a long hiking cycle. '), 'The 10-yr is ', lm(u, 'value', FMT.pct2(u.value)), ' against a ', mk(FMT.pct2(f.ust_peak), 'facts', 'ust_peak', null), ' peak on ' + FD(P(f.ust_peak_date)) + ', ' + Math.round(gap * 100) + ' bp lower, while hike odds rose. A falling long yield into a hike reads as growth worry, not inflation conviction. That 4.98% is a single-source figure, so treat the gap as a lead, not a fact.')
+    : h('p', {}, h('b', {}, 'Yields and the Fed agree. '), 'The 10-yr is ', lm(u, 'value', FMT.pct2(u.value)), ' against a ', mk(FMT.pct2(f.ust_peak), 'facts', 'ust_peak', null), ' peak on ' + FD(P(f.ust_peak_date)) + '.');
+  const gc = g.change_pct, stale = (Date.parse(f.max_date) - Date.parse(br.obs_date)) / 864e5 > 7;
+  const p3 = h('p', {}, h('b', {}, stale ? 'The oil leg of inflation is the stalest number here. ' : 'Oil and gasoline set the headline. '), 'Brent is ', lm(br, 'value', FMT.usd2(br.value)), ' as of ' + FD(P(br.obs_date)) + '. Gasoline is ', lm(g, 'value', FMT.usd2(g.value)), ' a gallon (' + FD(P(g.obs_date)) + ')' + (gc != null ? ', ' + signed(gc, 1) + '% since ' + FD(P(g.ref_date)) : '') + '.' + (stale ? ' Until a newer oil close is stored, the headline CPI path rests on an old input.' : ''));
+  el.replaceChildren(p1, p2, p3);
+});
+
+dash.draw('fednote', (el) => {
+  if (!ready()) { el.textContent = '—'; return; }
+  const lo = L().fed_funds_lower_pct;
+  el.textContent = 'Last decision (' + FD(P(lo.obs_date)) + '): ' + lo.note + '. Next meeting Dec 8–9.';
+});
+
+dash.draw('payrolls', (el) => {
+  if (!ready()) { el.replaceChildren(); return; }
+  const rows = B().filter((r) => r.metric === 'payrolls_k').sort((a, b) => (a.obs_date < b.obs_date ? 1 : -1)).slice(0, 5);
+  el.replaceChildren(...rows.map((r) => h('tr', {}, h('th', { scope: 'row' }, FM(P(r.obs_date))),
+    h('td', { class: 'r' }, mk(signed(r.value, 0), 'briefing', 'value', 'metric=payrolls_k&obs_date=' + r.obs_date), 'k'),
+    h('td', { class: 'nt' }, r.quality !== 'verified' ? r.quality : '', r.note ? ' ' + r.note : ''))));
+});
+
+dash.draw('hormuz', (el) => {
+  if (!ready()) { el.textContent = '—'; return; }
+  const l = L(), b = B(), pk = b.filter((r) => r.metric === 'brent_usd').sort((x, y) => y.value - x.value)[0];
+  const br = l.brent_usd, w = l.wti_usd, g = l.gasoline_usd_gal;
+  el.replaceChildren(h('p', {}, 'Brent ', lm(br, 'value', FMT.usd2(br.value)), ' (' + FD(P(br.obs_date)) + '); war-time peak ', mk(FMT.usd2(pk.value), 'briefing', 'value', 'metric=brent_usd&obs_date=' + pk.obs_date), ' (' + FD(P(pk.obs_date)) + ').'),
+    h('p', { style: 'margin-top:6px' }, 'WTI ', lm(w, 'value', FMT.usd2(w.value)), ' (' + FD(P(w.obs_date)) + '). Gasoline ', lm(g, 'value', FMT.usd2(g.value)), ' (' + FD(P(g.obs_date)) + ').'));
+});
+
+dash.draw('carrysig', (el) => {
+  if (!ready()) { el.textContent = '—'; return; }
+  const l = L(), j = l.usdjpy, v = l.vix_close, hit = j.value < 153 && v.value > 20;
+  el.className = 'mb-sig ' + (hit ? 'bad' : 'ok');
+  el.replaceChildren(hit ? 'Acute signal: ON. ' : 'Acute signal: off. ', h('span', { class: 'muted', style: 'font-weight:400' },
+    'Needs USD/JPY below 153 and VIX above 20. USD/JPY is ' + FMT.n2(j.value) + ' (' + FD(P(j.obs_date)) + '), VIX ' + FMT.n2(v.value) + ' (' + FD(P(v.obs_date)) + ', ' + v.quality + '). The two readings are weeks apart, so this is a coarse check.'));
+});
+
+dash.draw('fixes', (el) => {
+  if (!ready()) { el.replaceChildren(); return; }
+  const rows = B().filter((r) => /overstated|likely wrong|edition said|edition listed|revised|corrected|was BofA/i.test(r.note)).sort((a, b) => (a.obs_date < b.obs_date ? 1 : -1));
+  el.replaceChildren(...rows.map((r) => h('li', {}, h('b', {}, r.metric.replace(/_(pct|k|usd|close)$/, '').replace(/_/g, ' ') + ' (' + FD(P(r.obs_date)) + '): '), r.note)));
+});
+dash.onData(() => {
+  const box = document.getElementById('fix');
+  if (!box) return;
+  const d = dash.data('briefing');
+  box.hidden = !(d.status === 'ok' && d.data.some((r) => /overstated|likely wrong|edition said|edition listed|revised|corrected|was BofA/i.test(r.note)));
+});
+
+dash.draw('foot', (el) => {
+  if (!ready()) { el.textContent = '—'; return; }
+  el.textContent = 'Data: market-briefing-data.csv from the FED-Markets_ETL repository. Sources are BLS, BEA, the Federal Reserve, FRED and news recaps, named per row in Sources. Verified means the row came from a named source; unverified and estimate rows carry a tag.';
+});
+
+/* ---------- charts ---------- */
+function chart(el, cfg) {
+  const w = Math.max(280, Math.round(el.clientWidth)), narrow = w < 520, H = narrow ? 260 : 300;
+  const ml = 50, mr = cfg.right ? 50 : 14, mt = 12, mb = 28;
+  const all = cfg.series.flatMap((s) => s.pts);
+  const x = d3.scaleUtc().domain(d3.extent(all, (p) => p.d)).range([ml + 8, w - mr - 8]);
+  const dom = (axis) => {
+    const v = cfg.series.filter((s) => s.axis === axis).flatMap((s) => s.pts.map((p) => p.v)).concat(axis === 'l' && cfg.target != null ? [cfg.target] : []);
+    const lo = d3.min(v), hi = d3.max(v), pad = (hi - lo) * 0.12 || 1; return [lo - pad, hi + pad];
+  };
+  const yl = d3.scaleLinear().domain(dom('l')).nice(4).range([H - mb, mt]);
+  const yr = cfg.right ? d3.scaleLinear().domain(dom('r')).nice(4).range([H - mb, mt]) : null;
+  const leg = h('div', { class: 'mb-leg' }, ...cfg.series.map((s, i) => h('span', {}, h('i', { style: 'background:' + dash.colors[i % dash.colors.length] }), s.label)),
+    cfg.target != null ? h('span', {}, h('i', { style: 'background:var(--cds-chart-reference)' }), cfg.targetLabel) : null);
+  const svg = d3.create('svg').attr('viewBox', `0 0 ${w} ${H}`).attr('role', 'img').attr('aria-label', cfg.aria);
+  svg.append('g').selectAll('line').data(yl.ticks(4)).join('line').attr('x1', ml).attr('x2', w - mr).attr('y1', yl).attr('y2', yl).style('stroke', 'var(--cds-chart-grid)');
+  svg.append('g').attr('transform', `translate(0,${H - mb})`).call(d3.axisBottom(x).ticks(narrow ? 4 : 6).tickFormat(cfg.xfmt).tickSizeOuter(0)).call((g) => g.selectAll('path,line').style('stroke', 'var(--cds-chart-axis)'));
+  svg.append('g').attr('transform', `translate(${ml},0)`).call(d3.axisLeft(yl).ticks(4).tickFormat(cfg.lfmt).tickSize(0)).call((g) => g.select('path').remove());
+  if (yr) svg.append('g').attr('transform', `translate(${w - mr},0)`).call(d3.axisRight(yr).ticks(4).tickFormat(cfg.rfmt).tickSize(0)).call((g) => g.select('path').remove());
+  if (cfg.target != null) svg.append('line').attr('x1', ml).attr('x2', w - mr).attr('y1', yl(cfg.target)).attr('y2', yl(cfg.target)).style('stroke', 'var(--cds-chart-reference)').attr('stroke-dasharray', '5 4');
+  cfg.series.forEach((s, i) => {
+    const sc = s.axis === 'r' ? yr : yl, col = dash.colors[i % dash.colors.length];
+    svg.append('path').attr('fill', 'none').attr('stroke-width', 2).style('stroke', col).attr('d', d3.line().x((p) => x(p.d)).y((p) => sc(p.v))(s.pts));
+    svg.append('g').selectAll('circle').data(s.pts).join('circle').attr('cx', (p) => x(p.d)).attr('cy', (p) => sc(p.v)).attr('r', 3.5).attr('stroke-width', 2)
+      .style('stroke', col).style('fill', (p) => (p.q === 'verified' ? col : 'var(--color-bg)'));
+    const last = s.pts[s.pts.length - 1];
+    svg.append('text').attr('x', Math.min(x(last.d) + 6, w - 2)).attr('y', sc(last.v) - 8).attr('text-anchor', x(last.d) > w - 70 ? 'end' : 'start').text(s.fmt(last.v));
+  });
+  const tip = h('div', { class: 'mb-tip' }); tip.hidden = true;
+  const ov = svg.append('rect').attr('x', ml).attr('y', 0).attr('width', w - ml - mr).attr('height', H - mb).attr('fill', 'transparent');
+  ov.on('pointermove', (ev) => {
+    const px = d3.pointer(ev)[0], t = x.invert(px);
+    const rows = cfg.series.map((s) => { const p = s.pts.reduce((a, c) => (Math.abs(c.d - t) < Math.abs(a.d - t) ? c : a)); return s.label + ' ' + s.fmt(p.v) + ' (' + cfg.tfmt(p.d) + (p.q !== 'verified' ? ', ' + p.q : '') + ')'; });
+    tip.replaceChildren(...rows.map((r) => h('div', {}, r)));
+    tip.hidden = false;
+    const tw = tip.offsetWidth || 160;
+    tip.style.left = Math.max(0, Math.min(px - tw / 2, w - tw)) + 'px'; tip.style.top = '24px';
+  }).on('pointerleave', () => { tip.hidden = true; });
+  el.replaceChildren(leg, svg.node(), tip);
+}
+function series(b, metric, since) {
+  return b.filter((r) => r.metric === metric && r.obs_date >= since).sort((a, c) => (a.obs_date < c.obs_date ? -1 : 1)).map((r) => ({ d: P(r.obs_date), v: r.value, q: r.quality }));
+}
+dash.draw('chart-spx', (el) => {
+  if (!ready()) { el.textContent = '—'; return; }
+  const b = B(), mx = P(F().max_date), since = d3.utcFormat('%Y-%m-%d')(d3.utcDay.offset(mx, -92));
+  const s = series(b, 'spx_close', since), y = series(b, 'ust10y_pct', since);
+  chart(el, { right: true, xfmt: FD, tfmt: FD, lfmt: d3.format(',.0f'), rfmt: (v) => v.toFixed(1) + '%', aria: 'Line chart of S&P 500 closes against the 10-year Treasury yield over about three months.',
+    series: [{ label: 'S&P 500 (left)', axis: 'l', pts: s, fmt: d3.format(',.0f') }, { label: '10-yr yield (right)', axis: 'r', pts: y, fmt: (v) => v.toFixed(2) + '%' }] });
+});
+dash.draw('chart-cpi', (el) => {
+  if (!ready()) { el.textContent = '—'; return; }
+  const b = B(), hd = b.filter((r) => r.metric === 'cpi_yoy_pct').sort((a, c) => (a.obs_date < c.obs_date ? 1 : -1)).slice(0, 5).reverse();
+  const since = hd[0].obs_date, co = series(b, 'core_cpi_yoy_pct', since), hs = series(b, 'cpi_yoy_pct', since);
+  chart(el, { right: false, xfmt: FM, tfmt: FM, lfmt: (v) => v.toFixed(1) + '%', target: 2, targetLabel: '2% target', aria: 'Line chart of headline and core CPI year over year against the 2% target.',
+    series: [{ label: 'Headline CPI', axis: 'l', pts: hs, fmt: (v) => v.toFixed(1) + '%' }, { label: 'Core CPI', axis: 'l', pts: co, fmt: (v) => v.toFixed(1) + '%' }] });
+});
+</script>
