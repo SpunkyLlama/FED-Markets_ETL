@@ -1,0 +1,52 @@
+name: Refresh market data
+
+on:
+  schedule:
+    - cron: "30 22 * * 1-5"   # weekdays 22:30 UTC, after the US close
+  workflow_dispatch:
+    inputs:
+      lookback_days:
+        description: "Days of daily history to fetch (use 400 for the first backfill)"
+        default: "10"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-market-data
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run offline tests
+        run: python -m unittest discover -s etl -t . -v
+
+      - name: Fetch and reconcile
+        env:
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+          LOOKBACK: ${{ github.event.inputs.lookback_days || '10' }}
+        run: python -m etl.fetch --lookback-days "$LOOKBACK"
+
+      - name: Commit changes
+        run: |
+          git config user.name "market-data-bot"
+          git config user.email "market-data-bot@users.noreply.github.com"
+          git add data/market-briefing-data.csv data/last_run.json
+          if git diff --cached --quiet; then
+            echo "No data changes."
+          else
+            git commit -m "data: refresh $(date -u +%F)"
+            git push
+          fi
