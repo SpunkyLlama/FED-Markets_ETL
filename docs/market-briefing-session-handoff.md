@@ -9,6 +9,15 @@ A recurring, markets-only briefing James asks for by saying "update report". It 
 2. **Dashboard**: a Claude Artifact (type "Data"), `https://claude.ai/artifact/W7cNQ46cAUzgVs7brW2qvJ`, private until shared. Its source is `dashboard/index.html`.
 3. **Manual "news half"**: hike odds, Fed speakers, BOJ, Hormuz, nowcasts. The job cannot fetch these, so each edition researches them and adds rows by PR.
 
+## Start the next session with the skill
+Invoke `/anthropic-skills:market-briefing` first. It carries the CSV schema, the metric keys, the reconcile rules and the voice and footer rules, and its eight-step workflow still applies. **It is out of date in four places; where it disagrees with this file, this file wins:**
+1. It says the CSV lives in the Business Plan Ideas project (`claude/market-briefing-data.csv`) and is read and written with `project_read`/`project_write`. The source of truth is now `data/market-briefing-data.csv` in this repo, and those project tools were not available in the sessions that built this.
+2. It says to build one self-contained HTML file per edition. The deliverable is now the Artifact dashboard, refreshed by re-uploading the CSV (see below).
+3. It has no automated step. FRED and Yahoo rows now arrive by the Actions job, so the research step covers only the manual metrics and the job's `errors`/`conflicts`.
+4. It knows nothing about `last_run.json`, the PR workflow, or which hosts the cloud environment can read.
+
+Worth doing once: update the skill's "Connected files" and "Workflow" sections to point at this repo, and copy this handoff into the project.
+
 ## How to run "update report"
 1. `git pull` main. Read `data/last_run.json`: `errors` (series that failed), `conflicts` (fetched daily value disagrees with a verified row; not overwritten, a human decides), `revised`/`corrected`. Say what changed, including revisions.
 2. Check what is new since the CSV's newest dates (see the calendar below). If nothing is, say so and stop; do not re-upload an unchanged file.
