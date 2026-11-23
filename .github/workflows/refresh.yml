@@ -35,7 +35,7 @@ jobs:
 
       - name: Fetch and reconcile
         env:
-          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+          FRED_API_KEY: ${{ secrets.FED_API_KEY }}   # repo secret is named FED_API_KEY; the script reads FRED_API_KEY
           LOOKBACK: ${{ github.event.inputs.lookback_days || '10' }}
         run: python -m etl.fetch --lookback-days "$LOOKBACK"
 

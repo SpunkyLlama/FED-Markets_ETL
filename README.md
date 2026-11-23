@@ -29,7 +29,7 @@ offline tests, then `python -m etl.fetch`, then commits the CSV if anything chan
 ## Setup
 
 1. Get a free FRED API key: <https://fred.stlouisfed.org/docs/api/api_key.html>
-2. Repo Settings > Secrets and variables > Actions > new secret `FRED_API_KEY`.
+2. Repo Settings > Secrets and variables > Actions > new secret `FED_API_KEY` (the workflow maps it to the `FRED_API_KEY` variable the script reads).
 3. Merge this branch, then run the workflow once manually with `lookback_days` = 400 to backfill.
 
 Run locally:
