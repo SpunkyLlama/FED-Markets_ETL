@@ -92,6 +92,16 @@ class Reconcile(unittest.TestCase):
         self.assertEqual(rep.summary()["added"], 0)
 
 
+class Redaction(unittest.TestCase):
+    def test_api_key_never_reaches_errors(self):
+        def boom(series, key, start):
+            raise RuntimeError("400 for url: https://api.stlouisfed.org/x?series_id=A&api_key=SECRET123&file_type=json")
+        _, errors = fetch.collect(dt.date(2026, 11, 14), 10, "SECRET123", {}, fred=boom, yf=lambda t, s: {})
+        self.assertTrue(errors)
+        self.assertFalse(any("SECRET123" in e for e in errors))
+        self.assertTrue(any("api_key=REDACTED" in e for e in errors))
+
+
 class Collect(unittest.TestCase):
     """Drive collect() with fake fetchers: no network."""
 

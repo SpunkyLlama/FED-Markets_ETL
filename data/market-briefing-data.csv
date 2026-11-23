@@ -44,13 +44,13 @@ obs_date,freq,metric,value,unit,quality,source,edition,note
 2026-10-20,D,dow_close,52495.88,index,verified,AP index recap,2026-10-23,
 2026-11-10,D,dow_close,52231.89,index,verified,AP via La Nacion (Nov 11 deltas) / journalarta,2026-11-14,
 2026-11-11,D,dow_close,52486.49,index,verified,AP index recap via La Nacion,2026-11-14,"+254.60, +0.5%"
-2026-11-13,D,dow_close,52347.5508,index,verified,Yahoo Finance,2026-11-23,
-2026-11-16,D,dow_close,51608.1719,index,verified,Yahoo Finance,2026-11-23,
-2026-11-17,D,dow_close,50759.4219,index,verified,Yahoo Finance,2026-11-23,
-2026-11-18,D,dow_close,50198.1719,index,verified,Yahoo Finance,2026-11-23,
-2026-11-19,D,dow_close,49097.0586,index,verified,Yahoo Finance,2026-11-23,
-2026-11-20,D,dow_close,48147.3281,index,verified,Yahoo Finance,2026-11-23,
-2026-11-23,D,dow_close,49595.3086,index,verified,Yahoo Finance,2026-11-23,
+2026-11-13,D,dow_close,52347.55,index,verified,Yahoo Finance,2026-11-23,
+2026-11-16,D,dow_close,51608.17,index,verified,Yahoo Finance,2026-11-23,
+2026-11-17,D,dow_close,50759.42,index,verified,Yahoo Finance,2026-11-23,
+2026-11-18,D,dow_close,50198.17,index,verified,Yahoo Finance,2026-11-23,
+2026-11-19,D,dow_close,49097.06,index,verified,Yahoo Finance,2026-11-23,
+2026-11-20,D,dow_close,48147.33,index,verified,Yahoo Finance,2026-11-23,
+2026-11-23,D,dow_close,49595.31,index,verified,Yahoo Finance,2026-11-23,
 2026-01-01,event,fed_funds_lower_pct,3.5,pct,verified,Federal Reserve,2026-09-25,range in effect through Sep 16
 2026-09-16,event,fed_funds_lower_pct,3.75,pct,verified,Federal Reserve,2026-09-25,"25bp hike, 12-0 vote; first hike since 2023"
 2026-10-28,event,fed_funds_lower_pct,3.75,pct,verified,Federal Reserve,2026-11-14,"Oct 28 hold, 10-2 vote; Cook and Hammack dissented for 25bp hike; IORB 3.90%"
@@ -68,23 +68,23 @@ obs_date,freq,metric,value,unit,quality,source,edition,note
 2026-11-13,D,gold_usd,3886.3,usd_oz,verified,Yahoo Finance,2026-11-23,"front-month COMEX futures settle, not London spot"
 2026-11-16,D,gold_usd,3853,usd_oz,verified,Yahoo Finance,2026-11-23,"front-month COMEX futures settle, not London spot"
 2026-11-17,D,gold_usd,3864.2,usd_oz,verified,Yahoo Finance,2026-11-23,"front-month COMEX futures settle, not London spot"
-2026-11-18,D,gold_usd,3741.8999,usd_oz,verified,Yahoo Finance,2026-11-23,"front-month COMEX futures settle, not London spot"
+2026-11-18,D,gold_usd,3741.9,usd_oz,verified,Yahoo Finance,2026-11-23,"front-month COMEX futures settle, not London spot"
 2026-11-19,D,gold_usd,3685.5,usd_oz,verified,Yahoo Finance,2026-11-23,"front-month COMEX futures settle, not London spot"
-2026-11-20,D,gold_usd,3515.3999,usd_oz,verified,Yahoo Finance,2026-11-23,"front-month COMEX futures settle, not London spot"
-2026-11-23,D,gold_usd,3631.6001,usd_oz,verified,Yahoo Finance,2026-11-23,"front-month COMEX futures settle, not London spot"
+2026-11-20,D,gold_usd,3515.4,usd_oz,verified,Yahoo Finance,2026-11-23,"front-month COMEX futures settle, not London spot"
+2026-11-23,D,gold_usd,3631.6,usd_oz,verified,Yahoo Finance,2026-11-23,"front-month COMEX futures settle, not London spot"
 2026-07-27,D,jgb10y_pct,2.8,pct,unverified,edition,2026-07-27,
 2026-07-27,D,nasdaq_close,26269,index,unverified,edition,2026-07-27,
 2026-10-06,D,nasdaq_close,27599.79,index,verified,AP index recap,2026-10-23,record close
 2026-10-20,D,nasdaq_close,26424.82,index,verified,AP index recap,2026-10-23,
 2026-11-10,D,nasdaq_close,25065.87,index,verified,AP via La Nacion (Nov 11 deltas) / journalarta,2026-11-14,
 2026-11-11,D,nasdaq_close,25466.19,index,verified,AP index recap via La Nacion,2026-11-14,"+400.31, +1.6%"
-2026-11-13,D,nasdaq_close,25136.2695,index,verified,Yahoo Finance,2026-11-23,
-2026-11-16,D,nasdaq_close,24509.7598,index,verified,Yahoo Finance,2026-11-23,
-2026-11-17,D,nasdaq_close,24328.3809,index,verified,Yahoo Finance,2026-11-23,
-2026-11-18,D,nasdaq_close,24429.8809,index,verified,Yahoo Finance,2026-11-23,
-2026-11-19,D,nasdaq_close,23879.1992,index,verified,Yahoo Finance,2026-11-23,
-2026-11-20,D,nasdaq_close,22617.7305,index,verified,Yahoo Finance,2026-11-23,
-2026-11-23,D,nasdaq_close,24089.5586,index,verified,Yahoo Finance,2026-11-23,
+2026-11-13,D,nasdaq_close,25136.27,index,verified,Yahoo Finance,2026-11-23,
+2026-11-16,D,nasdaq_close,24509.76,index,verified,Yahoo Finance,2026-11-23,
+2026-11-17,D,nasdaq_close,24328.38,index,verified,Yahoo Finance,2026-11-23,
+2026-11-18,D,nasdaq_close,24429.88,index,verified,Yahoo Finance,2026-11-23,
+2026-11-19,D,nasdaq_close,23879.2,index,verified,Yahoo Finance,2026-11-23,
+2026-11-20,D,nasdaq_close,22617.73,index,verified,Yahoo Finance,2026-11-23,
+2026-11-23,D,nasdaq_close,24089.56,index,verified,Yahoo Finance,2026-11-23,
 2026-06-01,M,participation_pct,61.5,pct,unverified,edition,2026-07-27,
 2026-09-01,M,participation_pct,61.8,pct,verified,BLS,2026-10-23,
 2026-05-01,M,payrolls_k,63,thousands,verified,BLS via FRED,2026-11-23,
@@ -102,12 +102,12 @@ obs_date,freq,metric,value,unit,quality,source,edition,note
 2026-09-01,M,real_ahe_yoy_pct,-0.7,pct,verified,BLS,2026-10-23,
 2026-10-20,D,rut_close,2773.42,index,verified,AP index recap,2026-10-23,"Aug 11 edition listed ~3,027; likely wrong"
 2026-11-13,D,rut_close,2790.49,index,verified,Yahoo Finance,2026-11-23,
-2026-11-16,D,rut_close,2742.9399,index,verified,Yahoo Finance,2026-11-23,
-2026-11-17,D,rut_close,2701.8701,index,verified,Yahoo Finance,2026-11-23,
-2026-11-18,D,rut_close,2714.3101,index,verified,Yahoo Finance,2026-11-23,
-2026-11-19,D,rut_close,2655.1101,index,verified,Yahoo Finance,2026-11-23,
+2026-11-16,D,rut_close,2742.94,index,verified,Yahoo Finance,2026-11-23,
+2026-11-17,D,rut_close,2701.87,index,verified,Yahoo Finance,2026-11-23,
+2026-11-18,D,rut_close,2714.31,index,verified,Yahoo Finance,2026-11-23,
+2026-11-19,D,rut_close,2655.11,index,verified,Yahoo Finance,2026-11-23,
 2026-11-20,D,rut_close,2581.79,index,verified,Yahoo Finance,2026-11-23,
-2026-11-23,D,rut_close,2669.655,index,verified,Yahoo Finance,2026-11-23,
+2026-11-23,D,rut_close,2669.66,index,verified,Yahoo Finance,2026-11-23,
 2026-07-22,D,spx_close,7498.96,index,verified,AP index recap / Tapeboard,2026-10-23,
 2026-07-27,D,spx_close,7454,index,unverified,edition,2026-07-27,approximate
 2026-08-08,D,spx_close,7757,index,unverified,edition,2026-08-11,reported record close at the time
@@ -125,13 +125,13 @@ obs_date,freq,metric,value,unit,quality,source,edition,note
 2026-10-20,D,spx_close,7712.57,index,verified,AP index recap / Tapeboard,2026-10-23,
 2026-11-10,D,spx_close,7520.93,index,verified,AP via La Nacion (Nov 11 deltas) / journalarta,2026-11-14,"hot CPI selloff, -0.38%"
 2026-11-11,D,spx_close,7619.38,index,verified,AP index recap via La Nacion,2026-11-14,"+98.45, +1.3%; Zacks recap for 11/11 conflicts (says down) - AP arithmetic ties to Nov 10"
-2026-11-13,D,spx_close,7561.6699,index,verified,Yahoo Finance,2026-11-23,
-2026-11-16,D,spx_close,7416.5898,index,verified,Yahoo Finance,2026-11-23,
-2026-11-17,D,spx_close,7340.5298,index,verified,Yahoo Finance,2026-11-23,
-2026-11-18,D,spx_close,7323.6299,index,verified,Yahoo Finance,2026-11-23,
-2026-11-19,D,spx_close,7175.8301,index,verified,Yahoo Finance,2026-11-23,
-2026-11-20,D,spx_close,6910.3901,index,verified,Yahoo Finance,2026-11-23,
-2026-11-23,D,spx_close,7237.1699,index,verified,Yahoo Finance,2026-11-23,
+2026-11-13,D,spx_close,7561.67,index,verified,Yahoo Finance,2026-11-23,
+2026-11-16,D,spx_close,7416.59,index,verified,Yahoo Finance,2026-11-23,
+2026-11-17,D,spx_close,7340.53,index,verified,Yahoo Finance,2026-11-23,
+2026-11-18,D,spx_close,7323.63,index,verified,Yahoo Finance,2026-11-23,
+2026-11-19,D,spx_close,7175.83,index,verified,Yahoo Finance,2026-11-23,
+2026-11-20,D,spx_close,6910.39,index,verified,Yahoo Finance,2026-11-23,
+2026-11-23,D,spx_close,7237.17,index,verified,Yahoo Finance,2026-11-23,
 2026-10-20,D,spx_ytd_pct,12.7,pct,verified,AP index recap,2026-10-23,
 2026-11-23,D,spx_ytd_pct,5.7,pct,verified,Yahoo Finance,2026-11-23,vs 2025-12-31 close
 2026-06-01,M,unemployment_pct,4.2,pct,unverified,BLS,2026-10-23,
