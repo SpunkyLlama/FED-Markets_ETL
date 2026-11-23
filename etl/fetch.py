@@ -11,10 +11,16 @@ import argparse
 import datetime as dt
 import json
 import os
+import re
 import sys
 
 from . import core
 from .series import SPECS, EXTRA_MONTHS
+
+
+def redact(text):
+    """Strip API keys from error text: requests puts the full URL, query string included, in HTTPError."""
+    return re.sub(r"(api_key=)[^&\s'\"]+", r"\1REDACTED", str(text))
 
 
 # ---------- network fetchers (lazy imports so tests need no deps) ----------
@@ -33,7 +39,7 @@ def fetch_fred(series_id, api_key, start):
 def fetch_yf(ticker, start):
     import yfinance as yf
     hist = yf.Ticker(ticker).history(start=start, auto_adjust=False)
-    return {d.strftime("%Y-%m-%d"): float(v) for d, v in hist["Close"].dropna().items()}
+    return {d.strftime("%Y-%m-%d"): round(float(v), 2) for d, v in hist["Close"].dropna().items()}
 
 
 # ---------- collection ----------
@@ -77,7 +83,7 @@ def collect(today, lookback_days, fred_key, last_stored, fred=fetch_fred, yf=fet
             for d, v in sorted(vals.items()):
                 obs.append(core.Obs(d, s.freq, s.metric, v, s.unit, s.source, s.note))
         except Exception as e:  # one bad series must not sink the run
-            errors.append("%s (%s): %s: %s" % (s.metric, s.series, type(e).__name__, e))
+            errors.append("%s (%s): %s: %s" % (s.metric, s.series, type(e).__name__, redact(e)))
 
     # S&P YTD % for the latest close only
     prior = sorted(d for d in spx_raw if d < "%d-01-01" % today.year)
