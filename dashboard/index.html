@@ -173,7 +173,7 @@
   <footer>
     <details>
       <summary>What the data does not hold yet</summary>
-      <p style="margin-top:6px">Share of CPI categories above 3%, supercore services, Fed speaker remarks, dot plot, the US–Japan 2-yr spread, correlation breakdown, Hormuz incident status, and YTD for every index except the S&amp;P. Daily Brent, USD/JPY, JGB and gold have no clean source after mid-October in this file; the scheduled job is meant to fill them.</p>
+      <p style="margin-top:6px">Share of CPI categories above 3%, supercore services, Fed speaker remarks, dot plot, the US–Japan 2-yr spread, correlation breakdown, Hormuz incident status, and YTD for every index except the S&amp;P. The daily JGB 10-yr has no source yet (FRED carries only a monthly series). Gold is COMEX futures from Yahoo, not London spot.</p>
     </details>
     <p>Personal reference, not investment advice.</p>
     <p data-draw="foot">—</p>
@@ -360,7 +360,7 @@ dash.draw('read', (el) => {
     lm(cm, 'value', FMT.pct1(cm.value)), ' for ' + mo(cm) + (beat ? ', above the ' + cons + '% expected' : '') + ', while real wages are ', lm(real, 'value', FMT.pct1(real.value)), ' (' + mo(real) + '). Sticky inflation and a squeezed paycheck do not usually end with a mild hike.');
   const gap = f.ust_peak - u.value;
   const p2 = gap > 0.2
-    ? h('p', {}, h('b', {}, 'Bonds are not buying a long hiking cycle. '), 'The 10-yr is ', lm(u, 'value', FMT.pct2(u.value)), ' against a ', mk(FMT.pct2(f.ust_peak), 'facts', 'ust_peak', null), ' peak on ' + FD(P(f.ust_peak_date)) + ', ' + Math.round(gap * 100) + ' bp lower, while hike odds rose. A falling long yield into a hike reads as growth worry, not inflation conviction. That 4.98% is a single-source figure, so treat the gap as a lead, not a fact.')
+    ? h('p', {}, h('b', {}, 'Bonds are not buying a long hiking cycle. '), 'The 10-yr is ', lm(u, 'value', FMT.pct2(u.value)), ' against a ', mk(FMT.pct2(f.ust_peak), 'facts', 'ust_peak', null), ' peak on ' + FD(P(f.ust_peak_date)) + ', ' + Math.round(gap * 100) + ' bp lower, while hike odds rose. A falling long yield into a hike reads as growth worry, not inflation conviction.' + (u.quality === 'verified' ? '' : ' That yield is a single-source figure, so treat the gap as a lead, not a fact.'))
     : h('p', {}, h('b', {}, 'Yields and the Fed agree. '), 'The 10-yr is ', lm(u, 'value', FMT.pct2(u.value)), ' against a ', mk(FMT.pct2(f.ust_peak), 'facts', 'ust_peak', null), ' peak on ' + FD(P(f.ust_peak_date)) + '.');
   const gc = g.change_pct, stale = (Date.parse(f.max_date) - Date.parse(br.obs_date)) / 864e5 > 7;
   const p3 = h('p', {}, h('b', {}, stale ? 'The oil leg of inflation is the stalest number here. ' : 'Oil and gasoline set the headline. '), 'Brent is ', lm(br, 'value', FMT.usd2(br.value)), ' as of ' + FD(P(br.obs_date)) + '. Gasoline is ', lm(g, 'value', FMT.usd2(g.value)), ' a gallon (' + FD(P(g.obs_date)) + ')' + (gc != null ? ', ' + signed(gc, 1) + '% since ' + FD(P(g.ref_date)) : '') + '.' + (stale ? ' Until a newer oil close is stored, the headline CPI path rests on an old input.' : ''));
