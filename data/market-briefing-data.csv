@@ -7,6 +7,7 @@ obs_date,freq,metric,value,unit,quality,source,edition,note
 2026-10-01,M,ahe_yoy_pct,3.1,pct,verified,BLS via IndustryWeek,2026-11-14,below CPI; real wage not yet computed (no Oct CPI YoY)
 2026-06-01,event,boj_rate_pct,1.0,pct,unverified,edition,2026-07-27,
 2026-09-01,event,boj_rate_pct,1.25,pct,verified,Bank of Japan via FXStreet,2026-10-23,Sep meeting; exact date unconfirmed
+2026-10-30,event,boj_rate_pct,1.25,pct,verified,Bank of Japan (Oct 30 statement),2026-11-23,"hold, 8-1 vote; Takata proposed 1.5; next meeting Dec 17-18"
 2026-03-01,event,brent_usd,119.5,usd_bbl,unverified,edition,2026-07-27,war-time peak during Hormuz closure
 2026-07-27,D,brent_usd,78,usd_bbl,unverified,edition,2026-07-27,
 2026-10-20,D,brent_usd,109,usd_bbl,verified,OilPrice.com,2026-10-23,neared 112 intraday
@@ -29,6 +30,7 @@ obs_date,freq,metric,value,unit,quality,source,edition,note
 2026-07-01,M,core_pce_yoy_pct,3,pct,verified,BEA via FRED,2026-11-23,
 2026-08-01,M,core_pce_yoy_pct,3,pct,verified,BEA via FRED,2026-11-23,
 2026-09-01,M,core_pce_yoy_pct,3.1,pct,verified,BEA (Oct 29 release) via Fox Business / Primerates,2026-10-23,"was BofA estimate 3.1; BEA confirms 3.1% YoY, +0.3% MoM; Aug was 3.0%"
+2026-10-01,M,core_pce_yoy_pct,3.3,pct,estimate,"Federal Reserve (Bowman speech, Nov 10)",2026-11-23,nowcast from Oct CPI; BEA release for Oct not yet out
 2026-05-01,M,cpi_mom_pct,0.5,pct,verified,BLS via FRED,2026-11-23,
 2026-06-01,M,cpi_mom_pct,-0.4,pct,verified,BLS via FRED,2026-11-23,
 2026-07-01,M,cpi_mom_pct,0.1,pct,verified,BLS,2026-10-23,
@@ -60,6 +62,7 @@ obs_date,freq,metric,value,unit,quality,source,edition,note
 2026-10-18,D,fomc_hike_odds_pct,14,pct,verified,Kalshi/Polymarket via DeFi Rate,2026-10-23,for Oct 27-28 meeting
 2026-10-18,D,fomc_hike_odds_pct,74,pct,verified,Kalshi/Polymarket via DeFi Rate,2026-10-23,for Dec 8-9 meeting
 2026-11-10,D,fomc_hike_odds_pct,85,pct,verified,CME FedWatch via InvestmentNews / Polymarket via Crypto.news,2026-11-14,"for Dec 8-9 meeting, 25bp; 50bp odds 11.8% per Reuters; was 98.6% for 25bp pre-CPI (hike size repricing)"
+2026-11-13,D,fomc_hike_odds_pct,91.7,pct,unverified,"CME Group market wrap (Nov 13), search snippet",2026-11-23,"for Dec 8-9 meeting, 25bp; CME page not readable from this environment"
 2026-08-12,D,gasoline_usd_gal,4.04,usd_gal,verified,AAA via news,2026-08-19,
 2026-10-14,D,gasoline_usd_gal,4.33,usd_gal,verified,AAA via news,2026-10-23,
 2026-11-16,D,gasoline_usd_gal,3.805,usd_gal,verified,FRED (EIA),2026-11-23,"weekly national regular average, dated to the Monday"
