@@ -1,22 +1,36 @@
 obs_date,freq,metric,value,unit,quality,source,edition,note
+2026-05-01,M,ahe_yoy_pct,3.3,pct,verified,BLS via FRED,2026-11-23,
+2026-06-01,M,ahe_yoy_pct,3.4,pct,verified,BLS via FRED,2026-11-23,
 2026-07-01,M,ahe_yoy_pct,3.2,pct,verified,BLS,2026-08-19,
-2026-08-01,M,ahe_yoy_pct,3.1,pct,unverified,edition,2026-09-25,
+2026-08-01,M,ahe_yoy_pct,3.1,pct,verified,BLS via FRED,2026-09-25,was unverified; confirmed 2026-11-23
+2026-09-01,M,ahe_yoy_pct,3.2,pct,verified,BLS via FRED,2026-11-23,
 2026-10-01,M,ahe_yoy_pct,3.1,pct,verified,BLS via IndustryWeek,2026-11-14,below CPI; real wage not yet computed (no Oct CPI YoY)
 2026-06-01,event,boj_rate_pct,1.0,pct,unverified,edition,2026-07-27,
 2026-09-01,event,boj_rate_pct,1.25,pct,verified,Bank of Japan via FXStreet,2026-10-23,Sep meeting; exact date unconfirmed
 2026-03-01,event,brent_usd,119.5,usd_bbl,unverified,edition,2026-07-27,war-time peak during Hormuz closure
 2026-07-27,D,brent_usd,78,usd_bbl,unverified,edition,2026-07-27,
 2026-10-20,D,brent_usd,109,usd_bbl,verified,OilPrice.com,2026-10-23,neared 112 intraday
+2026-11-13,D,brent_usd,95.17,usd_bbl,verified,FRED (EIA),2026-11-23,
+2026-11-16,D,brent_usd,92.9,usd_bbl,verified,FRED (EIA),2026-11-23,
+2026-11-17,D,brent_usd,92.94,usd_bbl,verified,FRED (EIA),2026-11-23,
+2026-05-01,M,core_cpi_mom_pct,0.2,pct,verified,BLS via FRED,2026-11-23,
 2026-06-01,M,core_cpi_mom_pct,0.0,pct,verified,BLS,2026-10-23,
 2026-07-01,M,core_cpi_mom_pct,0.2,pct,verified,BLS,2026-10-23,
 2026-08-01,M,core_cpi_mom_pct,0.3,pct,verified,BLS,2026-10-23,consensus 0.2
 2026-09-01,M,core_cpi_mom_pct,0.3,pct,verified,BLS,2026-10-23,consensus 0.2
 2026-10-01,M,core_cpi_mom_pct,0.3,pct,verified,BLS via StockAnalysis / investingLive,2026-11-14,consensus 0.2; third straight 0.3
+2026-05-01,M,core_cpi_yoy_pct,2.9,pct,verified,BLS via FRED,2026-11-23,
 2026-06-01,M,core_cpi_yoy_pct,2.6,pct,verified,BLS,2026-10-23,
 2026-07-01,M,core_cpi_yoy_pct,2.5,pct,verified,BLS,2026-10-23,
 2026-08-01,M,core_cpi_yoy_pct,2.4,pct,verified,BLS,2026-10-23,
 2026-09-01,M,core_cpi_yoy_pct,2.6,pct,verified,BLS,2026-10-23,
+2026-05-01,M,core_pce_yoy_pct,3.2,pct,verified,BEA via FRED,2026-11-23,
+2026-06-01,M,core_pce_yoy_pct,3,pct,verified,BEA via FRED,2026-11-23,
+2026-07-01,M,core_pce_yoy_pct,3,pct,verified,BEA via FRED,2026-11-23,
+2026-08-01,M,core_pce_yoy_pct,3,pct,verified,BEA via FRED,2026-11-23,
 2026-09-01,M,core_pce_yoy_pct,3.1,pct,verified,BEA (Oct 29 release) via Fox Business / Primerates,2026-10-23,"was BofA estimate 3.1; BEA confirms 3.1% YoY, +0.3% MoM; Aug was 3.0%"
+2026-05-01,M,cpi_mom_pct,0.5,pct,verified,BLS via FRED,2026-11-23,
+2026-06-01,M,cpi_mom_pct,-0.4,pct,verified,BLS via FRED,2026-11-23,
 2026-07-01,M,cpi_mom_pct,0.1,pct,verified,BLS,2026-10-23,
 2026-08-01,M,cpi_mom_pct,0.4,pct,verified,BLS,2026-10-23,
 2026-09-01,M,cpi_mom_pct,0.6,pct,verified,BLS,2026-10-23,
@@ -48,6 +62,7 @@ obs_date,freq,metric,value,unit,quality,source,edition,note
 2026-11-10,D,fomc_hike_odds_pct,85,pct,verified,CME FedWatch via InvestmentNews / Polymarket via Crypto.news,2026-11-14,"for Dec 8-9 meeting, 25bp; 50bp odds 11.8% per Reuters; was 98.6% for 25bp pre-CPI (hike size repricing)"
 2026-08-12,D,gasoline_usd_gal,4.04,usd_gal,verified,AAA via news,2026-08-19,
 2026-10-14,D,gasoline_usd_gal,4.33,usd_gal,verified,AAA via news,2026-10-23,
+2026-11-16,D,gasoline_usd_gal,3.805,usd_gal,verified,FRED (EIA),2026-11-23,"weekly national regular average, dated to the Monday"
 2026-08-11,D,gold_usd,4428,usd_oz,unverified,edition,2026-08-11,
 2026-10-15,D,gold_usd,4198,usd_oz,verified,Tapeboard,2026-10-23,"Sep 25 edition overstated at ~4,480"
 2026-11-13,D,gold_usd,3886.3,usd_oz,verified,Yahoo Finance,2026-11-23,"front-month COMEX futures settle, not London spot"
@@ -72,11 +87,16 @@ obs_date,freq,metric,value,unit,quality,source,edition,note
 2026-11-23,D,nasdaq_close,24089.56,index,verified,Yahoo Finance,2026-11-23,
 2026-06-01,M,participation_pct,61.5,pct,unverified,edition,2026-07-27,
 2026-09-01,M,participation_pct,61.8,pct,verified,BLS,2026-10-23,
-2026-06-01,M,payrolls_k,57,thousands,unverified,BLS,2026-10-23,consensus 113k
+2026-05-01,M,payrolls_k,63,thousands,verified,BLS via FRED,2026-11-23,
+2026-06-01,M,payrolls_k,31,thousands,verified,BLS via FRED,2026-10-23,consensus 113k; revised from 57 on 2026-11-23
 2026-07-01,M,payrolls_k,-10,thousands,verified,BLS,2026-10-23,revised; first loss of 2026
-2026-08-01,M,payrolls_k,133,thousands,verified,BLS,2026-10-23,
+2026-08-01,M,payrolls_k,186,thousands,verified,BLS via FRED,2026-10-23,revised from 133 on 2026-11-23
 2026-09-01,M,payrolls_k,60,thousands,verified,BLS via Fox Business / IndustryWeek / ABC,2026-10-23,revised from 29 (Oct 23 edition); Nov 6 report; consensus was 84k at first print
 2026-10-01,M,payrolls_k,165,thousands,verified,BLS via Fox Business / IndustryWeek / ABC,2026-11-14,Nov 6 release; consensus ~65k; 12-mo avg 48k
+2026-05-01,M,pce_yoy_pct,3.8,pct,verified,BEA via FRED,2026-11-23,
+2026-06-01,M,pce_yoy_pct,3.5,pct,verified,BEA via FRED,2026-11-23,
+2026-07-01,M,pce_yoy_pct,3.4,pct,verified,BEA via FRED,2026-11-23,
+2026-08-01,M,pce_yoy_pct,3.4,pct,verified,BEA via FRED,2026-11-23,
 2026-09-01,M,pce_yoy_pct,3.6,pct,verified,BEA (Oct 29 release) via Fox Business / MarketScale,2026-11-14,headline PCE; +0.5% MoM
 2026-08-01,M,real_ahe_yoy_pct,-0.3,pct,verified,BLS,2026-09-25,
 2026-09-01,M,real_ahe_yoy_pct,-0.7,pct,verified,BLS,2026-10-23,
@@ -120,6 +140,12 @@ obs_date,freq,metric,value,unit,quality,source,edition,note
 2026-10-01,M,unemployment_pct,4.1,pct,verified,BLS via IndustryWeek / ABC,2026-11-14,U-6 7.9% from 7.6%
 2026-06-30,D,usdjpy,163,jpy,unverified,edition,2026-07-27,weakest yen in ~40 years
 2026-10-15,D,usdjpy,158,jpy,verified,FXStreet / RoboForex,2026-10-23,approximate mid-Oct
+2026-11-13,D,usdjpy,159.93,jpy,verified,FRED (Fed H.10),2026-11-23,H.10 noon NY rate; differs from intraday quotes
+2026-11-16,D,usdjpy,159.65,jpy,verified,FRED (Fed H.10),2026-11-23,H.10 noon NY rate; differs from intraday quotes
+2026-11-17,D,usdjpy,159.27,jpy,verified,FRED (Fed H.10),2026-11-23,H.10 noon NY rate; differs from intraday quotes
+2026-11-18,D,usdjpy,159.25,jpy,verified,FRED (Fed H.10),2026-11-23,H.10 noon NY rate; differs from intraday quotes
+2026-11-19,D,usdjpy,159.76,jpy,verified,FRED (Fed H.10),2026-11-23,H.10 noon NY rate; differs from intraday quotes
+2026-11-20,D,usdjpy,158.76,jpy,verified,FRED (Fed H.10),2026-11-23,H.10 noon NY rate; differs from intraday quotes
 2026-09-17,D,ust10y_pct,4.93,pct,verified,Tapeboard / InvestmentNews,2026-10-23,
 2026-09-28,D,ust10y_pct,5.23,pct,verified,Tapeboard / InvestmentNews,2026-10-23,highest since 2007
 2026-10-05,D,ust10y_pct,5.31,pct,verified,Tapeboard / InvestmentNews,2026-10-23,highest since 2007
@@ -127,8 +153,23 @@ obs_date,freq,metric,value,unit,quality,source,edition,note
 2026-10-13,D,ust10y_pct,5.22,pct,verified,Tapeboard / InvestmentNews,2026-10-23,
 2026-10-15,D,ust10y_pct,5.1,pct,verified,Tapeboard / InvestmentNews,2026-10-23,
 2026-11-10,D,ust10y_pct,4.98,pct,unverified,journalarta (AP-style recap),2026-11-14,single source; vs 5.31 peak Oct 5
+2026-11-13,D,ust10y_pct,5.15,pct,verified,FRED (Treasury H.15),2026-11-23,
+2026-11-16,D,ust10y_pct,5.12,pct,verified,FRED (Treasury H.15),2026-11-23,
+2026-11-17,D,ust10y_pct,5.1,pct,verified,FRED (Treasury H.15),2026-11-23,
+2026-11-18,D,ust10y_pct,5.07,pct,verified,FRED (Treasury H.15),2026-11-23,
+2026-11-19,D,ust10y_pct,5.04,pct,verified,FRED (Treasury H.15),2026-11-23,
+2026-11-20,D,ust10y_pct,4.92,pct,verified,FRED (Treasury H.15),2026-11-23,
 2026-08-11,D,vix_close,15.28,index,unverified,edition,2026-08-11,
 2026-10-15,D,vix_close,16.02,index,verified,Tapeboard,2026-10-23,
 2026-11-10,D,vix_close,19.63,index,unverified,journalarta (AP-style recap),2026-11-14,single source
+2026-11-13,D,vix_close,19.3,index,verified,FRED (Cboe),2026-11-23,
+2026-11-16,D,vix_close,22.91,index,verified,FRED (Cboe),2026-11-23,
+2026-11-17,D,vix_close,25.46,index,verified,FRED (Cboe),2026-11-23,
+2026-11-18,D,vix_close,24.56,index,verified,FRED (Cboe),2026-11-23,
+2026-11-19,D,vix_close,28.44,index,verified,FRED (Cboe),2026-11-23,
+2026-11-20,D,vix_close,35.89,index,verified,FRED (Cboe),2026-11-23,
 2026-08-11,D,wti_usd,83,usd_bbl,unverified,edition,2026-08-11,
 2026-10-15,D,wti_usd,95.69,usd_bbl,verified,Tapeboard,2026-10-23,
+2026-11-13,D,wti_usd,91.96,usd_bbl,verified,FRED (EIA),2026-11-23,
+2026-11-16,D,wti_usd,89.24,usd_bbl,verified,FRED (EIA),2026-11-23,
+2026-11-17,D,wti_usd,89.53,usd_bbl,verified,FRED (EIA),2026-11-23,
