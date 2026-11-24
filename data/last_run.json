@@ -1,31 +1,14 @@
 {
-  "run_date": "2026-11-23",
+  "run_date": "2026-11-24",
   "counts": {
-    "added": 41,
-    "upgraded": 1,
-    "revised": 2,
+    "added": 1,
+    "upgraded": 0,
+    "revised": 0,
     "corrected": 0,
     "conflicts": 1
   },
   "errors": [],
-  "revised": [
-    [
-      [
-        "payrolls_k",
-        "2026-06-01"
-      ],
-      "57",
-      "31"
-    ],
-    [
-      [
-        "payrolls_k",
-        "2026-08-01"
-      ],
-      "133",
-      "186"
-    ]
-  ],
+  "revised": [],
   "corrected": [],
   "conflicts": [
     [
@@ -33,8 +16,8 @@
         "gold_usd",
         "2026-11-23"
       ],
-      "3631.6001",
-      "3634.3999",
+      "3631.6",
+      "3651.4",
       "Yahoo Finance"
     ]
   ]

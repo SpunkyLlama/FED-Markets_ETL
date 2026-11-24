@@ -75,6 +75,7 @@ obs_date,freq,metric,value,unit,quality,source,edition,note
 2026-11-19,D,gold_usd,3685.5,usd_oz,verified,Yahoo Finance,2026-11-23,"front-month COMEX futures settle, not London spot"
 2026-11-20,D,gold_usd,3515.4,usd_oz,verified,Yahoo Finance,2026-11-23,"front-month COMEX futures settle, not London spot"
 2026-11-23,D,gold_usd,3631.6,usd_oz,verified,Yahoo Finance,2026-11-23,"front-month COMEX futures settle, not London spot"
+2026-11-24,D,gold_usd,3623.4,usd_oz,verified,Yahoo Finance,2026-11-24,"front-month COMEX futures settle, not London spot"
 2026-07-27,D,jgb10y_pct,2.8,pct,unverified,edition,2026-07-27,
 2026-07-27,D,nasdaq_close,26269,index,unverified,edition,2026-07-27,
 2026-10-06,D,nasdaq_close,27599.79,index,verified,AP index recap,2026-10-23,record close
