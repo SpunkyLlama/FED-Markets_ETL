@@ -53,6 +53,7 @@ obs_date,freq,metric,value,unit,quality,source,edition,note
 2026-11-19,D,dow_close,49097.06,index,verified,Yahoo Finance,2026-11-23,
 2026-11-20,D,dow_close,48147.33,index,verified,Yahoo Finance,2026-11-23,
 2026-11-23,D,dow_close,49595.31,index,verified,Yahoo Finance,2026-11-23,
+2026-11-24,D,dow_close,50018.7,index,verified,Yahoo Finance,2026-11-25,
 2026-01-01,event,fed_funds_lower_pct,3.5,pct,verified,Federal Reserve,2026-09-25,range in effect through Sep 16
 2026-09-16,event,fed_funds_lower_pct,3.75,pct,verified,Federal Reserve,2026-09-25,"25bp hike, 12-0 vote; first hike since 2023"
 2026-10-28,event,fed_funds_lower_pct,3.75,pct,verified,Federal Reserve,2026-11-14,"Oct 28 hold, 10-2 vote; Cook and Hammack dissented for 25bp hike; IORB 3.90%"
@@ -66,6 +67,7 @@ obs_date,freq,metric,value,unit,quality,source,edition,note
 2026-08-12,D,gasoline_usd_gal,4.04,usd_gal,verified,AAA via news,2026-08-19,
 2026-10-14,D,gasoline_usd_gal,4.33,usd_gal,verified,AAA via news,2026-10-23,
 2026-11-16,D,gasoline_usd_gal,3.805,usd_gal,verified,FRED (EIA),2026-11-23,"weekly national regular average, dated to the Monday"
+2026-11-23,D,gasoline_usd_gal,3.642,usd_gal,verified,FRED (EIA),2026-11-25,"weekly national regular average, dated to the Monday"
 2026-08-11,D,gold_usd,4428,usd_oz,unverified,edition,2026-08-11,
 2026-10-15,D,gold_usd,4198,usd_oz,verified,Tapeboard,2026-10-23,"Sep 25 edition overstated at ~4,480"
 2026-11-13,D,gold_usd,3886.3,usd_oz,verified,Yahoo Finance,2026-11-23,"front-month COMEX futures settle, not London spot"
@@ -89,6 +91,7 @@ obs_date,freq,metric,value,unit,quality,source,edition,note
 2026-11-19,D,nasdaq_close,23879.2,index,verified,Yahoo Finance,2026-11-23,
 2026-11-20,D,nasdaq_close,22617.73,index,verified,Yahoo Finance,2026-11-23,
 2026-11-23,D,nasdaq_close,24089.56,index,verified,Yahoo Finance,2026-11-23,
+2026-11-24,D,nasdaq_close,23733.54,index,verified,Yahoo Finance,2026-11-25,
 2026-06-01,M,participation_pct,61.5,pct,unverified,edition,2026-07-27,
 2026-09-01,M,participation_pct,61.8,pct,verified,BLS,2026-10-23,
 2026-05-01,M,payrolls_k,63,thousands,verified,BLS via FRED,2026-11-23,
@@ -112,6 +115,7 @@ obs_date,freq,metric,value,unit,quality,source,edition,note
 2026-11-19,D,rut_close,2655.11,index,verified,Yahoo Finance,2026-11-23,
 2026-11-20,D,rut_close,2581.79,index,verified,Yahoo Finance,2026-11-23,
 2026-11-23,D,rut_close,2669.66,index,verified,Yahoo Finance,2026-11-23,
+2026-11-24,D,rut_close,2684.94,index,verified,Yahoo Finance,2026-11-25,
 2026-07-22,D,spx_close,7498.96,index,verified,AP index recap / Tapeboard,2026-10-23,
 2026-07-27,D,spx_close,7454,index,unverified,edition,2026-07-27,approximate
 2026-08-08,D,spx_close,7757,index,unverified,edition,2026-08-11,reported record close at the time
@@ -136,8 +140,10 @@ obs_date,freq,metric,value,unit,quality,source,edition,note
 2026-11-19,D,spx_close,7175.83,index,verified,Yahoo Finance,2026-11-23,
 2026-11-20,D,spx_close,6910.39,index,verified,Yahoo Finance,2026-11-23,
 2026-11-23,D,spx_close,7237.17,index,verified,Yahoo Finance,2026-11-23,
+2026-11-24,D,spx_close,7201.09,index,verified,Yahoo Finance,2026-11-25,
 2026-10-20,D,spx_ytd_pct,12.7,pct,verified,AP index recap,2026-10-23,
 2026-11-23,D,spx_ytd_pct,5.7,pct,verified,Yahoo Finance,2026-11-23,vs 2025-12-31 close
+2026-11-24,D,spx_ytd_pct,5.2,pct,verified,Yahoo Finance,2026-11-25,vs 2025-12-31 close
 2026-06-01,M,unemployment_pct,4.2,pct,unverified,BLS,2026-10-23,
 2026-08-01,M,unemployment_pct,4.1,pct,verified,BLS,2026-10-23,
 2026-09-01,M,unemployment_pct,4.2,pct,verified,BLS,2026-10-23,
@@ -163,6 +169,7 @@ obs_date,freq,metric,value,unit,quality,source,edition,note
 2026-11-18,D,ust10y_pct,5.07,pct,verified,FRED (Treasury H.15),2026-11-23,
 2026-11-19,D,ust10y_pct,5.04,pct,verified,FRED (Treasury H.15),2026-11-23,
 2026-11-20,D,ust10y_pct,4.92,pct,verified,FRED (Treasury H.15),2026-11-23,
+2026-11-23,D,ust10y_pct,4.92,pct,verified,FRED (Treasury H.15),2026-11-25,
 2026-08-11,D,vix_close,15.28,index,unverified,edition,2026-08-11,
 2026-10-15,D,vix_close,16.02,index,verified,Tapeboard,2026-10-23,
 2026-11-10,D,vix_close,19.63,index,unverified,journalarta (AP-style recap),2026-11-14,single source
@@ -172,6 +179,7 @@ obs_date,freq,metric,value,unit,quality,source,edition,note
 2026-11-18,D,vix_close,24.56,index,verified,FRED (Cboe),2026-11-23,
 2026-11-19,D,vix_close,28.44,index,verified,FRED (Cboe),2026-11-23,
 2026-11-20,D,vix_close,35.89,index,verified,FRED (Cboe),2026-11-23,
+2026-11-23,D,vix_close,26.62,index,verified,FRED (Cboe),2026-11-25,
 2026-08-11,D,wti_usd,83,usd_bbl,unverified,edition,2026-08-11,
 2026-10-15,D,wti_usd,95.69,usd_bbl,verified,Tapeboard,2026-10-23,
 2026-11-13,D,wti_usd,91.96,usd_bbl,verified,FRED (EIA),2026-11-23,
