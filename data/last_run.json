@@ -1,31 +1,14 @@
 {
-  "run_date": "2026-11-26",
+  "run_date": "2026-11-27",
   "counts": {
-    "added": 19,
-    "upgraded": 1,
-    "revised": 2,
+    "added": 1,
+    "upgraded": 0,
+    "revised": 0,
     "corrected": 0,
-    "conflicts": 2
+    "conflicts": 3
   },
   "errors": [],
-  "revised": [
-    [
-      [
-        "pce_yoy_pct",
-        "2026-08-01"
-      ],
-      "3.4",
-      "3.5"
-    ],
-    [
-      [
-        "pce_yoy_pct",
-        "2026-09-01"
-      ],
-      "3.6",
-      "3.7"
-    ]
-  ],
+  "revised": [],
   "corrected": [],
   "conflicts": [
     [
@@ -44,6 +27,15 @@
       ],
       "3623.4",
       "3561.9",
+      "Yahoo Finance"
+    ],
+    [
+      [
+        "gold_usd",
+        "2026-11-25"
+      ],
+      "3605.6",
+      "3535.8",
       "Yahoo Finance"
     ]
   ]
